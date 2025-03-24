@@ -17,7 +17,7 @@ class Menu(models.Model):
     nama_menu = models.CharField(max_length=100)
     harga = models.DecimalField(max_digits=10, decimal_places=0)
     id_kategori = models.ForeignKey('MenuKategori', models.DO_NOTHING, db_column='id_kategori')
-
+    menu_image =  models.ImageField(upload_to="assets/", null=True, blank=True)
     class Meta:
         managed = False
         db_table = 'menu'
@@ -37,7 +37,7 @@ class Reservasi(models.Model):
     id_meja = models.ForeignKey(Meja, models.DO_NOTHING, db_column='id_meja', blank=True, null=True)
     id_admin = models.ForeignKey(User, on_delete=models.CASCADE,db_column='id_admin',null=True)
     nama_customer = models.CharField(max_length=100)
-    tanggal_reservasi = models.DateTimeField()
+    tanggal_reservasi = models.DateField()
     status = models.CharField(max_length=100)
 
     class Meta:
@@ -64,12 +64,12 @@ class Transaksi(models.Model):
     diskon = models.DecimalField(max_digits=10, decimal_places=0)
     grand_total = models.DecimalField(max_digits=10, decimal_places=0, blank=True, null=True)
     status_pembayaran = models.CharField(max_length=100, blank=True, null=True)
-
+    
     class Meta:
         managed = False
         db_table = 'transaksi'
 
-
+    
 class TransaksiDetail(models.Model):
     id_detail = models.AutoField(primary_key=True)
     id_transaksi = models.ForeignKey(Transaksi, models.DO_NOTHING, db_column='id_transaksi', blank=True, null=True)

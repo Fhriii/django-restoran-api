@@ -55,9 +55,9 @@ class StokSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class TransaksiDetailSerializer(serializers.ModelSerializer):
-    menu = MenuSerializer()
+
     class Meta:
-        model = Transaksi
+        model = TransaksiDetail
         fields = '__all__'
 
 class ReservasiDetailSerializer(serializers.ModelSerializer):

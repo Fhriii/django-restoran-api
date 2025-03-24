@@ -14,8 +14,9 @@ router.register(r'stok',StokViewSet,basename='stok')
 router.register(r'transaksi_detail',TransaksiDetailViewSet,basename='transaksi_detail')
  
 
+
+
 urlpatterns = [
     path('', include(router.urls)),
     path('profile/', UserProfileView.as_view(), name='profile'),
-
 ]
